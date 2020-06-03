@@ -23,7 +23,7 @@
   },
   "autoload": {
     "psr-4": {
-      "iivanov2\\TranslationManager\\": "src/"
+      "Iivanov2\\TranslationManager\\": "src/"
     }
   },
   "extra": {
@@ -32,7 +32,7 @@
     },
     "laravel": {
       "providers": [
-        "iivanov2\\TranslationManager\\ManagerServiceProvider"
+        "Iivanov2\\TranslationManager\\ManagerServiceProvider"
       ]
     }
   },
