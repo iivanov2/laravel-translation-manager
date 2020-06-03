@@ -53,7 +53,7 @@
 
     <div class="row" style="margin:0px 15px 15px 15px;">
         
-        <form id="form_import_groups" class="form-import" method="POST" action="{{action('\Barryvdh\TranslationManager\Controller@postImport')}}" data-remote="true" role="form" style="display: inline;">
+        <form id="form_import_groups" class="form-import" method="POST" action="{{action('\Iivanov2\TranslationManager\Controller@postImport')}}" data-remote="true" role="form" style="display: inline;">
             @csrf
             <input id="import_or_update" name="import_or_update" type="hidden" value="0">
 
@@ -67,7 +67,7 @@
             </div>
         </form>
 
-        <form class="form-find" method="POST" action="{{action('\Barryvdh\TranslationManager\Controller@postFind')}}" data-remote="true" role="form" style="display: inline;"
+        <form class="form-find" method="POST" action="{{action('\Iivanov2\TranslationManager\Controller@postFind')}}" data-remote="true" role="form" style="display: inline;"
                 data-confirm="Are you sure you want to scan you app folder? All found translation keys will be added to the database.">
             @csrf
             <button type="submit" class="btn btn-info" data-disable-with="Searching..." data-toggle="tooltip" data-placement="top" 
@@ -76,7 +76,7 @@
             </button>
         </form>
 
-        <form class="form-publish-all" method="POST" action="{{action('\Barryvdh\TranslationManager\Controller@postPublish', '*')}}" data-remote="true" role="form" style="display: inline;"
+        <form class="form-publish-all" method="POST" action="{{action('\Iivanov2\TranslationManager\Controller@postPublish', '*')}}" data-remote="true" role="form" style="display: inline;"
             data-confirm="Are you sure you want to publish all translations group? This will overwrite existing language files.">
             @csrf
             <button type="submit" class="btn btn-primary" data-disable-with="Publishing..."
@@ -89,7 +89,7 @@
 
         <div class="row">
             <div class="col-md-6">
-                <form class="form-inline" method="GET" action="{{action('\Barryvdh\TranslationManager\Controller@postListGroup')}}">
+                <form class="form-inline" method="GET" action="{{action('\Iivanov2\TranslationManager\Controller@postListGroup')}}">
                     <label>Изберете група за превод</label>
                     <select  onchange="this.form.submit();" name="group" class="form-control group-select">
                         <option value=""></option>
@@ -102,7 +102,7 @@
             </div>
 
             <div class="col-md-6">
-                <form class="form-inline" method="POST" action="{{ action('\Barryvdh\TranslationManager\Controller@postSearchString') }}">
+                <form class="form-inline" method="POST" action="{{ action('\Iivanov2\TranslationManager\Controller@postSearchString') }}">
                     @csrf
                     <label>Търсене на текст</label>
                     <input type="text" class="form-control" name="string_to_find">

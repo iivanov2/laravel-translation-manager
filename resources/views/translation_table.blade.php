@@ -44,7 +44,7 @@
     <a href="/admin/translation-manager/dashboard" class="btn btn-primary" role="button">&#8656; Меню</a>
 
     @if(!empty(request()->group))
-    <form class="form-publish-group" method="POST" action="{{action('\Barryvdh\TranslationManager\Controller@postPublish', request()->group)}}" data-remote="true" role="form" style="display: inline;"
+    <form class="form-publish-group" method="POST" action="{{action('\Iivanov2\TranslationManager\Controller@postPublish', request()->group)}}" data-remote="true" role="form" style="display: inline;"
         data-confirm="Моля, потвърдете публикуването на преводите от групата! Това ще презапише всички lang файлове.">
         @csrf
         <button type="submit" class="btn btn-primary" data-disable-with="Publishing..."
@@ -91,14 +91,14 @@
                             data-locale="{{$locale}}"
                             data-key="{!!htmlentities($key, ENT_QUOTES, 'UTF-8', false)!!}"
                             data-group="{{$translationGroup}}"
-                            data-url="{{action('\Barryvdh\TranslationManager\Controller@postTranslate')}}"
+                            data-url="{{action('\Iivanov2\TranslationManager\Controller@postTranslate')}}"
                             data-title="Въведете превод">@if(!empty($translations[$locale])){{$translations[$locale]->value}}@endif</a>
                         </a>
                     </td>
                 @endforeach
                 <td>
                     @if($deleteEnabled && !empty($translations[$locale]) && $translations[$locale]->group!="_json")
-                        <a href="{{ action('\Barryvdh\TranslationManager\Controller@postDelete', [$translations[$locale]->group, $key]) }}"
+                        <a href="{{ action('\Iivanov2\TranslationManager\Controller@postDelete', [$translations[$locale]->group, $key]) }}"
                             class="delete-key"
                             data-confirm="Are you sure you want to delete the translations for '{{$key}}'?">
                             <span class="glyphicon glyphicon-trash"></span></a>

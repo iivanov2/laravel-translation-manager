@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="{{ action('\Barryvdh\TranslationManager\Controller@showDashboard') }}" class="navbar-brand">
+            <a href="{{ action('\Iivanov2\TranslationManager\Controller@showDashboard') }}" class="navbar-brand">
                 Translation Manager
             </a>
         </div>
