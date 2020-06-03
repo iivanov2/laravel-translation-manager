@@ -62,9 +62,6 @@
             @foreach($locales as $locale)
                 <th>{{$locale}}</th>
             @endforeach
-            @if($deleteEnabled)
-            <th>&nbsp;</th>
-            @endif
         </tr>
         </thead>
         <tbody>
@@ -96,16 +93,6 @@
                         </a>
                     </td>
                 @endforeach
-                <td>
-                    @if($deleteEnabled && !empty($translations[$locale]) && $translations[$locale]->group!="_json")
-                        <a href="{{ action('\Iivanov2\TranslationManager\Controller@postDelete', [$translations[$locale]->group, $key]) }}"
-                            class="delete-key"
-                            data-confirm="Are you sure you want to delete the translations for '{{$key}}'?">
-                            <span class="glyphicon glyphicon-trash"></span></a>
-                    @else
-                        &nbsp;
-                    @endif
-                </td>
             </tr>
         @endforeach
         </tbody>

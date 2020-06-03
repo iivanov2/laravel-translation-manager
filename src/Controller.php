@@ -31,8 +31,7 @@ class Controller extends BaseController
 
         return view('translation-manager::dashboard')
                 ->with('locales', $locales)
-                ->with('groups', $groups)
-                ->with('deleteEnabled', $this->manager->getConfig('delete_enabled'));
+                ->with('groups', $groups);
     }
 
     public function postImport(Request $request)
@@ -120,8 +119,7 @@ class Controller extends BaseController
             ->with('translationsBundle', $translationsBundle)
             ->with('locales', $locales)
             ->with('numTranslations', $numTranslations)
-            ->with('numChanged', $numChanged)
-            ->with('deleteEnabled', $this->manager->getConfig('delete_enabled'));
+            ->with('numChanged', $numChanged);
     }
     
     /**
@@ -150,7 +148,6 @@ class Controller extends BaseController
             ->with('translationsBundle', $translationsBundle)
             ->with('locales', $locales)
             ->with('numTranslations', $numTranslations)
-            ->with('numChanged', $numChanged)
-            ->with('deleteEnabled', $this->manager->getConfig('delete_enabled'));
+            ->with('numChanged', $numChanged);
     }
 }

@@ -68,6 +68,12 @@ class ManagerServiceProvider extends ServiceProvider {
             $viewPath => base_path('resources/views/vendor/translation-manager'),
         ], 'views');
 
+        $langPath = __DIR__.'/../resources/lang';
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'translation-manager');
+        $this->publishes([
+            $langPath => base_path('resources/lang'),
+        ], 'lang');
+
         $migrationPath = __DIR__.'/../database/migrations';
         $this->publishes([
             $migrationPath => base_path('database/migrations'),
