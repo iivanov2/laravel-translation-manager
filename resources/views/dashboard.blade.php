@@ -30,22 +30,6 @@
             $('div.success-publish-all').slideDown();
             window.location.reload();
         });
-
-
-
-
-
-
-
-
-        $('#base-locale').change(function (event) {
-            console.log($(this).val());
-            $.cookie('base_locale', $(this).val());
-        })
-        if (typeof $.cookie('base_locale') !== 'undefined') {
-            $('#base-locale').val($.cookie('base_locale'));
-        }
-
     })
 </script>
 

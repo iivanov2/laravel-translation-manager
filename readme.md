@@ -37,6 +37,10 @@ You need to publish the config file for this package. This will add the file `co
 
     $ php artisan vendor:publish --provider="Iivanov2\TranslationManager\ManagerServiceProvider" --tag=config
 
+In order to translate the package in additional languages, you need to publish lang files. They will then be placed in `resources/lang/{locale}/translation_manager.php`.
+
+    $ php artisan vendor:publish --provider="Iivanov2\TranslationManager\ManagerServiceProvider" --tag=lang
+
 In order to edit the default template, the views must be published as well. The views will then be placed in `resources/views/vendor/translation-manager`.
 
     $ php artisan vendor:publish --provider="Iivanov2\TranslationManager\ManagerServiceProvider" --tag=views
