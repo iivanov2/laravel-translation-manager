@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="{{ action('\Iivanov2\TranslationManager\Controller@showDashboard') }}" class="navbar-brand">
-                Translation Manager
+                {{trans('translation-manager::translation_manager.TranslationManagerTitle')}}
             </a>
         </div>
     </div>

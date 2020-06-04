@@ -24,7 +24,7 @@ Require this package in your composer.json and run composer update (or run `comp
 
     composer require iivanov2/laravel-translation-manager
 
-After updating composer, add the ServiceProvider to the providers array in `config/app.php`
+After including the package, your application will be able to discover the service provider automatically but if doesn't add it to the providers array in `config/app.php` manually
 
     'Iivanov2\TranslationManager\ManagerServiceProvider',
 
@@ -41,7 +41,7 @@ In order to translate the package in additional languages, you need to publish l
 
     $ php artisan vendor:publish --provider="Iivanov2\TranslationManager\ManagerServiceProvider" --tag=lang
 
-In order to edit the default template, the views must be published as well. The views will then be placed in `resources/views/vendor/translation-manager`.
+In order to edit the default templates, the views must be published as well. The views will then be placed in `resources/views/vendor/translation-manager`.
 
     $ php artisan vendor:publish --provider="Iivanov2\TranslationManager\ManagerServiceProvider" --tag=views
 

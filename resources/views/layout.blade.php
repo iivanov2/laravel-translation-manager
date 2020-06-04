@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>@yield('title', 'Translation Manager')</title>
+    <title>@yield('title', trans('translation-manager::translation_manager.TranslationManagerTitle'))</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 

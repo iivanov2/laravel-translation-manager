@@ -1,6 +1,6 @@
-@extends('vendor.translation-manager.layout')
+@extends('translation-manager::layout')
 
-@include('vendor.translation-manager.header_section')
+@include('translation-manager::header_section')
 
 @section('body')
 
@@ -41,20 +41,22 @@
 </script>
 
 <div class="container-fluid">
-    <a href="/admin/translation-manager/dashboard" class="btn btn-primary" role="button">&#8656; Меню</a>
+    <a href="/admin/translation-manager/dashboard" class="btn btn-primary" role="button">&#8656; {{trans('translation-manager::translation_manager.GoToDashboardBtn')}}</a>
 
     @if(!empty(request()->group))
     <form class="form-publish-group" method="POST" action="{{action('\Iivanov2\TranslationManager\Controller@postPublish', request()->group)}}" data-remote="true" role="form" style="display: inline;"
-        data-confirm="Моля, потвърдете публикуването на преводите от групата! Това ще презапише всички lang файлове.">
+        data-confirm="{{trans('translation-manager::translation_manager.ConfirmPublishingGroupMsg')}}">
         @csrf
         <button type="submit" class="btn btn-primary" data-disable-with="Publishing..."
-            data-toggle="tooltip" data-placement="top" title="Новите преводи трябва да се публикуват изрично, за да станат видими в сайта. Ако не ги публикувате, те ще са видими само в модула за преводи.">
-                Публикуване на групата
+            data-toggle="tooltip" data-placement="top" 
+            title="{{trans('translation-manager::translation_manager.PublishTranslationsTooltip')}}">
+                {{trans('translation-manager::translation_manager.PublishGroupBtn')}}
         </button>
     </form>
     @endif
 
-    <h4>Общо: <?= $numTranslations ?>, непубликувани: <?= $numChanged ?></h4>
+    <h4>{{trans('translation-manager::translation_manager.TotalNum', ['num'=>$numTranslations])}}, 
+        {{trans('translation-manager::translation_manager.UnpublishedNum', ['num'=>$numChanged])}}</h4>
     <table class="table table-bordered table-responsive">
         <thead>
         <tr>
@@ -89,7 +91,7 @@
                             data-key="{!!htmlentities($key, ENT_QUOTES, 'UTF-8', false)!!}"
                             data-group="{{$translationGroup}}"
                             data-url="{{action('\Iivanov2\TranslationManager\Controller@postTranslate')}}"
-                            data-title="Въведете превод">@if(!empty($translations[$locale])){{$translations[$locale]->value}}@endif</a>
+                            data-title="{{trans('translation-manager::translation_manager.EnterTranslationTitle')}}">@if(!empty($translations[$locale])){{$translations[$locale]->value}}@endif</a>
                         </a>
                     </td>
                 @endforeach

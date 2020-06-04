@@ -31,15 +31,8 @@ return [
 
     /**
      * Exclude specific languages from Laravel Translation Manager.
-     *
-     * @type array
-     *
-     *    array(
-     *        'fr',
-     *        'de',
-     *    )
      */
-    'exclude_langs'  => [],
+    'exclude_langs'  => [], //this option is deprecated, it is using \storage\.ignore_locales scheme: ["en","zb"]
 
     /**
      * Export translations with keys output alphabetically.
