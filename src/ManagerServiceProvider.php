@@ -84,6 +84,7 @@ class ManagerServiceProvider extends ServiceProvider {
 
         $router->group($config, function($router)
         {
+            $router->get('/', 'Controller@showDashboard');
             $router->get('/dashboard', 'Controller@showDashboard');
             $router->post('/import', 'Controller@postImport');
             $router->post('/find', 'Controller@postFind'); //Scans all files for strings

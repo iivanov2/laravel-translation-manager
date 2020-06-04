@@ -41,7 +41,7 @@
 </script>
 
 <div class="container-fluid">
-    <a href="/admin/translation-manager/dashboard" class="btn btn-primary" role="button">&#8656; {{trans('translation-manager::translation_manager.GoToDashboardBtn')}}</a>
+    <a href="/admin/translation-manager" class="btn btn-primary" role="button">&#8656; {{trans('translation-manager::translation_manager.GoToDashboardBtn')}}</a>
 
     @if(!empty(request()->group))
     <form class="form-publish-group" method="POST" action="{{action('\Iivanov2\TranslationManager\Controller@postPublish', request()->group)}}" data-remote="true" role="form" style="display: inline;"
