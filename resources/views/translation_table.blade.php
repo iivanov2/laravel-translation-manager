@@ -35,7 +35,7 @@
         });
 
         $('.form-publish-group').on('ajax:success', function (e, data) {
-            $('div.success-publish').slideDown();
+            alert("{{escapeJS(trans('translation-manager::translation_manager.PublishingDoneMsg'))}}");
         });
     })
 </script>
@@ -47,7 +47,8 @@
     <form class="form-publish-group" method="POST" action="{{action('\Iivanov2\TranslationManager\Controller@postPublish', request()->group)}}" data-remote="true" role="form" style="display: inline;"
         data-confirm="{{trans('translation-manager::translation_manager.ConfirmPublishingGroupMsg')}}">
         @csrf
-        <button type="submit" class="btn btn-primary" data-disable-with="Publishing..."
+        <button type="submit" class="btn btn-primary" 
+        data-disable-with="{{trans('translation-manager::translation_manager.Publishing_')}}"
             data-toggle="tooltip" data-placement="top" 
             title="{{trans('translation-manager::translation_manager.PublishTranslationsTooltip')}}">
                 {{trans('translation-manager::translation_manager.PublishGroupBtn')}}
@@ -55,8 +56,13 @@
     </form>
     @endif
 
-    <h4>{{trans('translation-manager::translation_manager.TotalNum', ['num'=>$numTranslations])}}, 
-        {{trans('translation-manager::translation_manager.UnpublishedNum', ['num'=>$numChanged])}}</h4>
+    <h4 style="margin-top:15px;">
+        @if(!empty(request()->group))
+            <b>{{trans('translation-manager::translation_manager.Group')}}: <u>{{request()->group}}</u></b>,
+        @endif
+        {{trans('translation-manager::translation_manager.TotalNum')}}: {{$numTranslations}}, 
+        {{trans('translation-manager::translation_manager.UnpublishedNum')}}: {{$numChanged}}
+    </h4>
     <table class="table table-bordered table-responsive">
         <thead>
         <tr>

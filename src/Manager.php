@@ -142,7 +142,7 @@ class Manager
             'key'    => $key,
         ]);
 
-        // Check if the database is different then the files
+        // Check if the database is different than the files
         $newStatus = $translation->value === $value ? Translation::STATUS_SAVED : Translation::STATUS_CHANGED;
         if ($newStatus !== (int) $translation->status) {
             $translation->status = $newStatus;

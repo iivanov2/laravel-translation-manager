@@ -36,7 +36,7 @@ class Controller extends BaseController
 
     public function postImport(Request $request)
     {
-        $replace = $request->get('import_or_update', false);
+        $replace = $request->get('import_or_update') == 'update' ? true : false;
         $counter = $this->manager->importTranslations($replace);
 
         return ['status' => 'ok', 'counter' => $counter];

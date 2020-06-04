@@ -21,6 +21,13 @@
             window.location.reload();
         });
 
+        $('.form-update').on('ajax:success', function (e, data) {
+            var msg = "{{escapeJS(trans('translation-manager::translation_manager.UpdatingDoneMsg'))}}";
+            var msgFilled = msg.replace(":NUM", data.counter);
+            alert(msgFilled);
+            window.location.reload();
+        });
+
         $('.form-find').on('ajax:success', function (e, data) {
             var msg = "{{escapeJS(trans('translation-manager::translation_manager.SearchingDoneMsg'))}}";
             var msgFilled = msg.replace(":NUM", data.counter);
@@ -38,26 +45,33 @@
 
     <div class="row" style="margin:0px 15px 15px 15px;">
         
-        <form id="form_import_groups" class="form-import" method="POST" action="{{action('\Iivanov2\TranslationManager\Controller@postImport')}}" data-remote="true" role="form" style="display: inline;">
+        <form class="form-import" method="POST" action="{{action('\Iivanov2\TranslationManager\Controller@postImport')}}" data-remote="true" role="form" style="display: inline;">
             @csrf
-            <input id="import_or_update" name="import_or_update" type="hidden" value="0">
+            <input name="import_or_update" type="hidden" value="insert">
 
-            <div class="btn-group">
-                <button onclick="$('#import_or_update').submit();" type="button" class="btn btn-success" data-disable-with="Loading..." data-toggle="tooltip" data-placement="top" 
+                <button type="submit" class="btn btn-success" 
+                data-disable-with="{{trans('translation-manager::translation_manager.Loading_')}}" data-toggle="tooltip" data-placement="top" 
                 title="{{trans('translation-manager::translation_manager.ImportGroupsBtnTooltip')}}">
                     {{trans('translation-manager::translation_manager.ImportGroupsBtn')}}
                 </button>
-                <button onclick="$('#import_or_update').val(1);$('#import_or_update').submit();" type="button" class="btn btn-success" data-disable-with="Loading..." data-toggle="tooltip" data-placement="top" 
+        </form>
+
+        <form class="form-update" method="POST" action="{{action('\Iivanov2\TranslationManager\Controller@postImport')}}" data-remote="true" role="form" style="display: inline;">
+            @csrf
+            <input name="import_or_update" type="hidden" value="update">
+
+                <button type="submit" class="btn btn-success"
+                data-disable-with="{{trans('translation-manager::translation_manager.Loading_')}}" data-toggle="tooltip" data-placement="top" 
                 title="{{trans('translation-manager::translation_manager.UpdateGroupsBtnTooltip')}}">
                     {{trans('translation-manager::translation_manager.UpdateGroupsBtn')}}
                 </button>
-            </div>
         </form>
 
         <form class="form-find" method="POST" action="{{action('\Iivanov2\TranslationManager\Controller@postFind')}}" data-remote="true" role="form" style="display: inline;"
                 data-confirm="{{trans('translation-manager::translation_manager.ConfirmScanningFilesMsg')}}">
             @csrf
-            <button type="submit" class="btn btn-info" data-disable-with="Searching..." data-toggle="tooltip" data-placement="top" 
+            <button type="submit" class="btn btn-info" 
+            data-disable-with="{{trans('translation-manager::translation_manager.Searching_')}}" data-toggle="tooltip" data-placement="top" 
             title="{{trans('translation-manager::translation_manager.ScanFilesBtnTooltip')}}">
                 {{trans('translation-manager::translation_manager.ScanFilesBtn')}}
             </button>
