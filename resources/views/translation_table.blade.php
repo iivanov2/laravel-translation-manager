@@ -35,7 +35,7 @@
         });
 
         $('.form-publish-group').on('ajax:success', function (e, data) {
-            alert("{{escapeJS(trans('translation-manager::translation_manager.PublishingDoneMsg'))}}");
+            alert("{{trans('translation-manager::translation_manager.PublishingDoneMsg')}}");
         });
     })
 </script>

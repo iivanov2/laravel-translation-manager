@@ -15,28 +15,28 @@
         });
 
         $('.form-import').on('ajax:success', function (e, data) {
-            var msg = "{{escapeJS(trans('translation-manager::translation_manager.ImportingDoneMsg'))}}";
+            var msg = "{{trans('translation-manager::translation_manager.ImportingDoneMsg')}}";
             var msgFilled = msg.replace(":NUM", data.counter);
             alert(msgFilled);
             window.location.reload();
         });
 
         $('.form-update').on('ajax:success', function (e, data) {
-            var msg = "{{escapeJS(trans('translation-manager::translation_manager.UpdatingDoneMsg'))}}";
+            var msg = "{{trans('translation-manager::translation_manager.UpdatingDoneMsg')}}";
             var msgFilled = msg.replace(":NUM", data.counter);
             alert(msgFilled);
             window.location.reload();
         });
 
         $('.form-find').on('ajax:success', function (e, data) {
-            var msg = "{{escapeJS(trans('translation-manager::translation_manager.SearchingDoneMsg'))}}";
+            var msg = "{{trans('translation-manager::translation_manager.SearchingDoneMsg')}}";
             var msgFilled = msg.replace(":NUM", data.counter);
             alert(msgFilled);
             window.location.reload();
         });
 
         $('.form-publish-all').on('ajax:success', function (e, data) {
-            alert("{{escapeJS(trans('translation-manager::translation_manager.PublishingDoneMsg'))}}");
+            alert("{{trans('translation-manager::translation_manager.PublishingDoneMsg')}}");
         });
     })
 </script>
