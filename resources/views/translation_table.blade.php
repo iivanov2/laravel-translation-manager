@@ -92,6 +92,7 @@
                         <!-- x-editable http://vitalets.github.io/x-editable/docs.html -->
                         <a href="#edit" class="editable status-@if(!empty($translations[$locale])){{$translations[$locale]->status}}@else{{0}}@endif"
                             data-type="textarea"
+                            data-tpl="<textarea class=&quot;form-control input-large&quot; rows=&quot;7&quot; cols=&quot;100&quot;></textarea>"
                             data-pk="@if(!empty($translations[$locale])){{$translations[$locale]->id}}@else{{0}}@endif"
                             data-locale="{{$locale}}"
                             data-key="{!!htmlentities($key, ENT_QUOTES, 'UTF-8', false)!!}"
