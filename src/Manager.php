@@ -241,12 +241,21 @@ class Manager
 
     public function missingKey($namespace, $group, $key)
     {
-        if (! in_array($group, $this->config['exclude_groups'])) {
-            Translation::firstOrCreate([
-                'locale' => $this->app['config']['app.locale'], //samo za Scan for string butona
-                'group'  => $group,
-                'key'    => $key,
-            ]);
+        try {
+            if (! in_array($group, $this->config['exclude_groups'])) {
+                Translation::firstOrCreate([
+                    'locale' => $this->app['config']['app.locale'], //samo za Scan for string butona
+                    'group'  => $group,
+                    'key'    => $key,
+                ]);
+            }
+        } catch (\Throwable $th) {
+            $errorMsg=$th->getMessage();
+            $logMsg=$errorMsg;
+            if (strpos($errorMsg, "Incorrect string value") !== false) {
+                $logMsg="!!! Probably found non-latin strings in non-UTF8 encoded files. !!! -> ".$logMsg;
+            }
+            logger($logMsg);
         }
     }
 
