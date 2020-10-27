@@ -38,6 +38,32 @@
             alert("{{trans('translation-manager::translation_manager.PublishingDoneMsg')}}");
         });
     })
+
+function showLang(checkbox,locale)
+{
+    if($(checkbox).is(':checked')) {
+        $('.col-lang-'+locale).show();
+        $.removeCookie("hide-lang-"+locale);
+    }
+    else {
+        $('.col-lang-'+locale).hide();
+        $.cookie("hide-lang-"+locale, 1, { expires : 365 });
+    }
+}
+
+function showOrHideLangOnPageLoad()
+{
+    @foreach($locales as $locale)
+        if($.cookie('hide-lang-{{$locale}}')==1) {
+            $('.col-lang-{{$locale}}').hide();
+            $('#show_lang_checkbox_{{$locale}}').attr("checked",false);
+        }
+    @endforeach
+}
+
+$(document).ready(function() {
+    showOrHideLangOnPageLoad();
+});
 </script>
 
 <div class="container-fluid">
@@ -53,6 +79,14 @@
             title="{{trans('translation-manager::translation_manager.PublishTranslationsTooltip')}}">
                 {{trans('translation-manager::translation_manager.PublishGroupBtn')}}
         </button>
+
+        <p style="float: right;">
+        Show lang:
+        @foreach($locales as $locale)
+            <label>{{$locale}}</label>
+              <input id="show_lang_checkbox_{{$locale}}" type="checkbox" value="{{$locale}}" onclick="showLang(this,'{{$locale}}')" checked>&nbsp;&nbsp;
+        @endforeach
+        </p>
     </form>
     @endif
 
@@ -68,7 +102,7 @@
         <tr>
             <th width="15%">Key</th>
             @foreach($locales as $locale)
-                <th>{{$locale}}</th>
+                <th class="col-lang-{{$locale}}">{{$locale}}</th>
             @endforeach
         </tr>
         </thead>
@@ -88,7 +122,7 @@
                     {!!htmlentities($key, ENT_QUOTES, 'UTF-8', false)!!}
                 </td>
                 @foreach($locales as $locale)
-                    <td>
+                    <td class="col-lang-{{$locale}}">
                         <!-- x-editable http://vitalets.github.io/x-editable/docs.html -->
                         <a href="#edit" class="editable status-@if(!empty($translations[$locale])){{$translations[$locale]->status}}@else{{0}}@endif"
                             data-type="textarea"
