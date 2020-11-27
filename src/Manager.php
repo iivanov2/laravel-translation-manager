@@ -329,6 +329,13 @@ class Manager
         }
 
         $this->events->dispatch(new TranslationsExportedEvent());
+        
+        if($this->config['notify_on_publish']['enabled']) {
+            simple_email([
+                'to'=>$this->config['notify_on_publish']['emails'], 
+                'body'=>$this->config['notify_on_publish']['email_text']
+            ]);
+        }
     }
 
     public function exportAllTranslations()
